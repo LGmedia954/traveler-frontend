@@ -4,11 +4,7 @@ import { render } from '@testing-library/react';
 import React from 'react';
 
 class App extends React.Component {
-  componentDidMount() {
-    fetch("http://localhost:3000/api/v1/users/1")
-      .then(response => response.json())
-      .then(console.log)
-  }
+ 
   render() {
     return (
       <div className="App">
