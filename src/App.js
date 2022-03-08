@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
-import { connect } from 'react-redux'
+import Login from "./components/Login.js"
+// import { connect } from 'react-redux'
 
 class App extends React.Component {
  
   render() {
     return (
-      "Hello this is a test"
+      <Login/>
     );
 
   }
