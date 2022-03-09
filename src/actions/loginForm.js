@@ -1,7 +1,6 @@
-export const updateLoginForm = FormData => {
+export const updateLoginForm = (formData) => {
   return {
     type: "UPDATE_LOGIN_FORM",
-    // action: FormData
-    FormData
+    formData
   }
 }

@@ -7,7 +7,7 @@ export const setCurrentUser = user => {
   }
 }
 
-// asynchronous actou creators
+// asynchronous action creators
 export const login = credentials => {
   return dispatch => {
     return fetch("http://localhost:3001/api/v1/login", {
