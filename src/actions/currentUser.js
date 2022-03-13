@@ -7,9 +7,14 @@ export const setCurrentUser = user => {
   }
 }
 
+export const clearCurrentUser = () => {
+  return {
+    type: "CLEAR_CURRENT_USER",
+  }
+}
+
 // asynchronous action creators
-export const login = credentials => {
-  console.log("credentials are", credentials)
+export const login = (credentials) => {
   return dispatch => {
     return fetch("http://localhost:3001/api/v1/login", {
       credentials: "include",
@@ -20,15 +25,24 @@ export const login = credentials => {
       body: JSON.stringify(credentials)
     })
       .then(r => r.json())
-      .then(user => {
-        if (user.error) {
-          alert(user.error)
+      .then(response => {
+        if (response.error) {
+          alert(response.error)
         } else {
-          dispatch(setCurrentUser(user))
-          // dispatch(setCurrentUser(response.data))
+          dispatch(setCurrentUser(response.data))
         }
       })
       .catch(console.log)
+  }
+}
+
+export const logout = () => {
+  return dispatch => {
+    dispatch(clearCurrentUser())
+    return fetch("http://localhost:3001/api/v1/logout", {
+      credentials: "include",
+      method: "DELETE"
+    })
   }
 }
 
@@ -42,14 +56,14 @@ export const getCurrentUser = () => {
       },
     })
       .then(r => r.json())
-      .then(user => {
-        if (user.error) {
-          alert(user.error)
+      .then(response => {
+        if (response.error) {
+          alert(response.error)
         } else {
-          dispatch(setCurrentUser(user))
-          // dispatch(setCurrentUser(response.data))
+          dispatch(setCurrentUser(response.data))
         }
       })
       .catch(console.log)
   }
 }
+
