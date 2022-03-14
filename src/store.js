@@ -7,7 +7,6 @@ import loginForm from './reducers/loginForm'
 // import tripForm from './reducers/tripForm'
 import thunk from 'redux-thunk'
 
-// fyi different syntax options in lines 8 and 9
 const reducer = combineReducers({
   currentUser,
   loginForm,
