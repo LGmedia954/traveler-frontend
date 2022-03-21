@@ -1,3 +1,5 @@
+import { resetLoginForm } from "./loginForm.js"
+
 // synchronous action creators
 export const setCurrentUser = user => {
   return {
@@ -9,19 +11,20 @@ export const setCurrentUser = user => {
 
 export const clearCurrentUser = () => {
   return {
-    type: "CLEAR_CURRENT_USER",
+    type: "CLEAR_CURRENT_USER"
   }
 }
 
 // asynchronous action creators
 export const login = (credentials) => {
+  console.log("credentials are", credentials)
   return dispatch => {
     return fetch("http://localhost:3000/api/v1/login", {
       credentials: "include",
       method: "POST",
       headers: {
-        Accepts: 'application/json',
-        'Content-Type': 'application/json'
+        // Accepts: 'application/json',
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(credentials)
     })
@@ -32,13 +35,14 @@ export const login = (credentials) => {
           alert(response.error)
         } else {
           dispatch(setCurrentUser(response.data))
+          dispatch(resetLoginForm())
         }
       })
       .catch(console.log)
   }
 }
 
-export const logout = event => {
+export const logout = () => {
   return dispatch => {
     dispatch(clearCurrentUser())
     return fetch('http://localhost:3000/api/v1/logout', {
@@ -49,6 +53,7 @@ export const logout = event => {
 }
 
 export const getCurrentUser = () => {
+  console.log("DISPATCHING GET CURRENT USER")
   return dispatch => {
     return fetch("http://localhost:3000/api/v1/get_current_user", {
       credentials: "include",
