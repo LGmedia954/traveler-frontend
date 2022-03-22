@@ -1,9 +1,10 @@
 import React from 'react'
+import MyTrips from './MyTrips.js'
 
 const MainContainer = () => {
   return (
     <div className="MainContainer">
-      Main Container
+      <MyTrips/>
     </div>
   )
 }
