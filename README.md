@@ -1,6 +1,8 @@
 # Traveler App - Front End
 
-Work in Progress
+Work in Progress - FIS React Redux Series 1-12
+
+Note: react-router-dom@5.3.0
 
 Backend Repository: https://github.com/LGmedia954/traveler-backend
 

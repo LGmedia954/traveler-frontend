@@ -11,7 +11,7 @@ const NavBar = ({ currentUser }) => {
       {currentUser.attributes.name} from 
       {currentUser.attributes.hometown.city} </strong> : "" }
       <button> Log In </button>
-      <button> Log Out </button>
+      <button> Sign Up </button>
     </div>
   )
 }
