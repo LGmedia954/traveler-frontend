@@ -26,7 +26,7 @@ class App extends React.Component {
           <Route exact path='/signup' component={Signup}/>
           <Route exact path='/login' component={Login}/>
           <Route exact path='/' render={()=> loggedIn ? <MyTrips/> : <Home/>}/>
-          <Route exact path='/trips' component={MyTrips}/>https://medium.com/swlh/a-step-by-step-guide-to-getting-started-on-fiverr-3b7cf414a400
+          <Route exact path='/trips' component={MyTrips}/>
         </Switch>
       </div>
     );
@@ -36,8 +36,9 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return ({
-    loggedIn: !!state.currentUser
+    loggedIn: !!state.currentUser,
+    // trips: state.myTrips
   })
 }
 
-export default connect(mapStateToProps, { getCurrentUser })(App);
+export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
