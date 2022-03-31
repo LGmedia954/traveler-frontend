@@ -18,19 +18,16 @@ export const clearCurrentUser = () => {
 }
 
 // asynchronous action creators
-export const login = (credentials) => {
-  console.log("credentials are", credentials)
+export const login = (credentials, history) => {
   return dispatch => {
-    return fetch("http://localhost:3000/api/v1/login", {
+    return fetch("http://localhost:3001/api/v1/login", {
       credentials: "include",
       method: "POST",
       headers: {
-        // Accepts: 'application/json',
         "Content-Type": "application/json"
       },
       body: JSON.stringify(credentials)
     })
-      // .then(r => r.text())
       .then(r => r.json())
       .then(response => {
         if (response.error) {
@@ -39,18 +36,19 @@ export const login = (credentials) => {
           dispatch(setCurrentUser(response.data))
           dispatch(getMyTrips())
           dispatch(resetLoginForm())
+          history.push('/')
         }
       })
       .catch(console.log)
   }
 }
 
-export const signup = credentials => {
+export const signup = (credentials, history) => {
   return dispatch => {
     const userInfo = {
       user: credentials
     }
-    return fetch("http://localhost:3000/api/v1/signup", {
+    return fetch("http://localhost:3001/api/v1/signup", {
       credentials: "include",
       method: "POST",
       headers: {
@@ -66,6 +64,7 @@ export const signup = credentials => {
           dispatch(setCurrentUser(response.data))
           dispatch(getMyTrips())
           dispatch(resetSignupForm())
+          history.push('/')
         }
       })
       .catch(console.log)
@@ -83,9 +82,8 @@ export const logout = () => {
 }
 
 export const getCurrentUser = () => {
-  console.log("DISPATCHING GET CURRENT USER")
   return dispatch => {
-    return fetch("http://localhost:3000/api/v1/get_current_user", {
+    return fetch("http://localhost:3001/api/v1/get_current_user", {
       credentials: "include",
       method: "GET",
       headers: {

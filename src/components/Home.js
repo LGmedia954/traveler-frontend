@@ -4,9 +4,11 @@ import Signup from './Signup.js'
 import { Link } from 'react-router-dom'
 
 
-const Home = ({}) => (
+const Home = () => (
   <div>
-    <Link to="/signup">Sign Up</Link> or <Link to="/login">Log In</Link>
+    <span>
+      <Link to="/signup">Sign Up</Link> or <Link to="/login">Log In</Link>
+    </span>
   </div>
 );
 
