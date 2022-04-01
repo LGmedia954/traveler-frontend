@@ -6,6 +6,12 @@ export const setMyTrips = trips => {
   }
 }
 
+export const clearTrips = () => {
+  return {
+    type: "CLEAR_TRIPS"
+  }
+}
+
 // async actions
 export const getMyTrips = () => {
   return dispatch => {
@@ -21,6 +27,7 @@ export const getMyTrips = () => {
         if (response.error) {
           alert(response.error)
         } else {
+          console.log(response.data)
           dispatch(setMyTrips(response.data))
         }
       })
