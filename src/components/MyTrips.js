@@ -7,17 +7,9 @@ import { connect } from 'react-redux'
 const MyTrips = props => {
   const tripCards = props.trips.length > 0 ? 
   props.trips.map(t => <TripCard trip={t} key={t.id}/>) : null
-  return (
-    tripCards
-  )
+  
+  return tripCards
 }
-
-// const mapStateToProps = state => {
-//   return {
-//     trips: state.myTrips
-//   }
-// }
-
 
 
 // We provide mapStateToProps to Redux, to tell Redux:

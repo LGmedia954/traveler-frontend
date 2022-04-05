@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 
 // 3.  This means Redux gives us back a prop called updateTripForm
 // which when invoked, Redux will now dispatch
-const NewTripForm = ({ name, startDate, endDate, history }) => {
+const NewTripForm = ({ name, startDate, endDate, history, updateNewTripForm }) => {
 
   // const { name, startDate, endDate } = formData
 
@@ -20,11 +20,18 @@ const NewTripForm = ({ name, startDate, endDate, history }) => {
     updateNewTripForm(name, value)
   }
 
+  const handleSubmit = event => {
+    event.preventDefault()
+
+    formData: {
+      name: ""
+      startDate: ""
+      endDate: ""
+    }
+  }
+
   return (
-    <form onSubmit={event => {
-      event.preventDefault()
-      // handleSubmit(formData)
-    }}>
+    <form onSubmit={handleSubmit}>
       <input
         placeholder="name"
         name="name"
