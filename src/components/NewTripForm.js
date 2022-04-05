@@ -1,15 +1,18 @@
 import React from 'react';
 // 1.  We first grab the action creator
 import { updateNewTripForm } from '../actions/newTripForm'
+import { createTrip } from '../actions/myTrips'
 import { connect } from 'react-redux'
 
 
 
 // 3.  This means Redux gives us back a prop called updateTripForm
 // which when invoked, Redux will now dispatch
-const NewTripForm = ({ name, startDate, endDate, history, updateNewTripForm }) => {
+const NewTripForm = ({ 
+  formData, history, updateNewTripForm, createTrip, userId 
+}) => {
 
-  // const { name, startDate, endDate } = formData
+  const { name, startDate, endDate } = formData
 
   const handleChange = event => {
     console.log("trigger Handle change")
@@ -22,16 +25,22 @@ const NewTripForm = ({ name, startDate, endDate, history, updateNewTripForm }) =
 
   const handleSubmit = event => {
     event.preventDefault()
+    createTrip({...FormData,
+    userId
+  })
 
-    formData: {
-      name: ""
-      startDate: ""
-      endDate: ""
-    }
+    // formData: {
+    //   name: ""
+    //   startDate: ""
+    //   endDate: ""
+    // }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={event => {
+      // event.preventDefault()
+      // handleSubmit(formData)
+    }}>
       <input
         placeholder="name"
         name="name"
@@ -52,20 +61,19 @@ const NewTripForm = ({ name, startDate, endDate, history, updateNewTripForm }) =
       /><br/>
       <input
         type="submit"
-        value={ "Create Trip" }
+        value={editMode ? "Update Trip" : "Create Trip" }
       />
     </form>
 )};
 
 const mapStateToProps = state => {
-  const { startDate, endDate, name }= state.newTripForm
+  const userId = state.currentUser ? state.currentUser.id : ""
   return {
-    startDate,
-    endDate,
-    name
+    formData: state.newTripForm,
+    userId
   }
 }
 
 // 2.  We pass the action creator to redux's connect function
 // using either mapDispatchToProps or the shorthand object syntax seen below.
-export default connect(mapStateToProps, { updateNewTripForm })(NewTripForm);
+export default connect(mapStateToProps, { updateNewTripForm, createTrip })(NewTripForm);

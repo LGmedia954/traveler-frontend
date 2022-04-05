@@ -6,21 +6,16 @@ import Logout from './Logout'
 const NavBar = ({ currentUser, loggedIn }) => {
   return (
     <div className="NavBar">
-      <NavLink exact activeClassName="active" to="/trips"  >My Trips |</NavLink>
-      <NavLink exact activeClassName="active" to="/trips/new" >New Trip |</NavLink>
-      { loggedIn ? <Logout/> : null }
+      <NavLink exact activeClassName="active" to="/trips"  >My Trips</NavLink>
+      <NavLink exact activeClassName="active" to="/trips/new" >New Trip</NavLink>
+      { loggedIn ? <><p id="loggedin">Logged in as {currentUser.attributes.name}</p><Logout/></> : null}
     </div>
   )
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     currentUser: state
-//   }
-// }
-
 // We can do this deconstruct because the incoming argument is an object, 
 // state, coming from redux, and it has a property called currentUser
+
 const mapStateToProps = ({ currentUser }) => {
   return {
     currentUser,

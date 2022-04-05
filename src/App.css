@@ -9,7 +9,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 20s linear; 
   }
 }
 
@@ -24,6 +24,9 @@
   color: white;
 }
 
+#loggedin {
+  font-size: 7px;
+}
 .App-link {
   color: #61dafb;
 }
@@ -44,5 +47,5 @@
 }
 
 .active {
-  color: blue;
+  color: green;
 }

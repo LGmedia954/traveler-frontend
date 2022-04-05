@@ -22,7 +22,7 @@ export const addTrip = trip => {
 // async actions
 export const getMyTrips = () => {
   return dispatch => {
-    return fetch("http://localhost:3000/api/v1/trips", {
+    return fetch("http://localhost:3001/api/v1/trips", {
       credentials: "include",
       method: "GET",
       headers: {
@@ -34,7 +34,6 @@ export const getMyTrips = () => {
         if (response.error) {
           alert(response.error)
         } else {
-          console.log(response.data)
           dispatch(setMyTrips(response.data))
         }
       })
@@ -42,26 +41,32 @@ export const getMyTrips = () => {
   }
 }
 
-export const createTrip = (tripData) => {
+export const createTrip = tripData => {
   return dispatch => {
-
+    const sendableTripData = {
+      start_date: tripData.startDate,
+      end_date: tripData.endDate,
+      name: tripData.name,
+      user_id: tripData.userId
+    }
     return fetch("http://localhost:3001/api/v1/trips", {
       credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: tripData
+      body: JSON.stringify(sendableTripData)
     })
-    // .then(r => r.json())
-    // .then(resp => {
-    //   if (resp.error) {
-    //     alert(resp.error)
-    //   } else {
-    //     dispatch(addTrip(resp.data))
-    //   }
-    // })
-    // .catch(console.log)
-    
+      .then(r => r.json())
+      .then(resp => {
+        if (resp.error) {
+          alert(resp.error)
+        } else {
+          dispatch(addTrip(resp.data))
+          
+        }
+      })
+      .catch(console.log)
+
   }
 }
