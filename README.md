@@ -1,6 +1,8 @@
 # Traveler App - Front End
 
-CSS Styling in Progress - FIS React Redux Series 1-12
+CSS Styling in Progress --
+
+FIS React Redux Series 1-12. Full CRUD functionality using a Rails API backend and React/Redux front end, with full Redux ownership of the app's state.
 
 Note: react-router-dom@5.3.0
 
