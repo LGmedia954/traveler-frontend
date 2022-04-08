@@ -25,9 +25,10 @@ const NewTripForm = ({
 
   const handleSubmit = event => {
     event.preventDefault()
-    createTrip({...FormData,
-    userId
-  })
+    createTrip({
+      ...FormData,
+      userId
+    }, history)
 
     // formData: {
     //   name: ""
@@ -37,10 +38,7 @@ const NewTripForm = ({
   }
 
   return (
-    <form onSubmit={event => {
-      // event.preventDefault()
-      // handleSubmit(formData)
-    }}>
+    <form onSubmit={handleSubmit}>
       <input
         placeholder="name"
         name="name"
@@ -61,7 +59,7 @@ const NewTripForm = ({
       /><br/>
       <input
         type="submit"
-        value={editMode ? "Update Trip" : "Create Trip" }
+        // value={editMode ? "Update Trip" : "Create Trip" }
       />
     </form>
 )};
