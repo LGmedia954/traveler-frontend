@@ -15,6 +15,9 @@ const NavBar = ({ currentUser, loggedIn }) => {
 
 // We can do this deconstruct because the incoming argument is an object, 
 // state, coming from redux, and it has a property called currentUser
+// state = { ...,
+//   currentUser: {...}
+// }
 
 const mapStateToProps = ({ currentUser }) => {
   return {

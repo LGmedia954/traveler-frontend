@@ -1,15 +1,14 @@
 import React from 'react';
 // 1.  We first grab the action creator
-import { updateNewTripForm } from '../actions/newTripForm'
-import { createTrip } from '../actions/myTrips'
+import { updateTripForm } from '../actions/tripForm'
 import { connect } from 'react-redux'
 
 
 
 // 3.  This means Redux gives us back a prop called updateTripForm
 // which when invoked, Redux will now dispatch
-const NewTripForm = ({ 
-  formData, history, updateNewTripForm, createTrip, userId 
+const TripForm = ({ 
+  formData, updateTripForm, userId, trip, handleSubmit, editMode
 }) => {
 
   const { name, startDate, endDate } = formData
@@ -18,27 +17,16 @@ const NewTripForm = ({
     console.log("trigger Handle change")
     const { name, value } = event.target
     // 4.  This is not an invocation of just the action creator,
-    // it's now Redux dispatching the action built by the action
-    // creator with the appropriate arguments
-    updateNewTripForm(name, value)
-  }
-
-  const handleSubmit = event => {
-    event.preventDefault()
-    createTrip({
-      ...FormData,
-      userId
-    }, history)
-
-    // formData: {
-    //   name: ""
-    //   startDate: ""
-    //   endDate: ""
-    // }
+    // it's now Redux dispatching the action built by 
+    // the action creator with the appropriate arguments
+    updateTripForm(name, value)
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={event => {
+      event.preventDefault()
+      handleSubmit(formData)
+    }}>
       <input
         placeholder="name"
         name="name"
@@ -59,7 +47,7 @@ const NewTripForm = ({
       /><br/>
       <input
         type="submit"
-        // value={editMode ? "Update Trip" : "Create Trip" }
+        value={editMode ? "Update Trip" : "Create Trip" }
       />
     </form>
 )};
@@ -67,11 +55,11 @@ const NewTripForm = ({
 const mapStateToProps = state => {
   const userId = state.currentUser ? state.currentUser.id : ""
   return {
-    formData: state.newTripForm,
+    formData: state.tripForm,
     userId
   }
 }
 
 // 2.  We pass the action creator to redux's connect function
 // using either mapDispatchToProps or the shorthand object syntax seen below.
-export default connect(mapStateToProps, { updateNewTripForm, createTrip })(NewTripForm);
+export default connect(mapStateToProps, { updateTripForm })(TripForm);

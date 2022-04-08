@@ -1,6 +1,6 @@
 # Traveler App - Front End
 
-Work in Progress - FIS React Redux Series 1-12
+CSS Styling in Progress - FIS React Redux Series 1-12
 
 Note: react-router-dom@5.3.0
 
