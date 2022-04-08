@@ -14,6 +14,8 @@ export default (state=initialState, action) => {
       return returnVal
     case "RESET_NEW_TRIP_FORM":
       return initialState
+    case "SET_FORM_DATA_FOR_EDIT":
+      return action.tripFormData
     default:
       return state
   }

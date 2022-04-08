@@ -37,6 +37,13 @@ class App extends React.Component {
               return <TripCard trip={trip} {...props}/>
             }
           }/>
+          <Route exact path='/trips/:id/edit' render={props => {
+            const trip = trips.find(trip => trip.id === props.match.params.id)
+              // dispatch updateForm -> trip
+              console.log(trip)
+              return <NewTripForm trip={trip} {...props}/>
+            }
+          }/>
         </Switch>
       </div>
     );
