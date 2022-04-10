@@ -1,7 +1,7 @@
 import React from 'react';
 import TripForm from './TripForm'
 import { updateTrip } from '../actions/myTrips'
-import { setFormDataForEdit } from '../actions/tripForm'
+import { setFormDataForEdit, resetTripForm } from '../actions/tripForm'
 import { connect } from 'react-redux'
 
 
@@ -14,6 +14,10 @@ class EditTripFormWrapper extends React.Component {
 
   componentDidUpdate(prevProps) {
     this.props.trip && !prevProps.trip && this.props.setFormDataForEdit(this.props.trip)
+  }
+
+  componentWillUnmount() {
+    this.props.resetTripForm()
   }
 
   handleSubmit = (formData) => {
@@ -33,4 +37,4 @@ class EditTripFormWrapper extends React.Component {
   }
 };
 
-export default connect(null, { updateTrip, setFormDataForEdit })(EditTripFormWrapper);
+export default connect(null, { updateTrip, setFormDataForEdit, resetTripForm })(EditTripFormWrapper);
