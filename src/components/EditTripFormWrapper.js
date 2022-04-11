@@ -1,13 +1,12 @@
 import React from 'react';
 import TripForm from './TripForm'
-import { updateTrip } from '../actions/myTrips'
+import { updateTrip, deleteTrip } from '../actions/myTrips'
 import { setFormDataForEdit, resetTripForm } from '../actions/tripForm'
 import { connect } from 'react-redux'
 
 
 
 class EditTripFormWrapper extends React.Component {
-
   componentDidMount(){
     this.props.trip && this.props.setFormDataForEdit(this.props.trip)
   }
@@ -27,13 +26,13 @@ class EditTripFormWrapper extends React.Component {
       tripId: trip.id
     }, history)
   }
-  
+
   render() {
-    const { history, trip } = this.props
+    const { history, deleteTrip, trip } = this.props
     const tripId = trip ? trip.id : null
-    return <>
-        <TripForm editMode handleSubmit={this.handleSubmit} />
-      </>
+    return  <>
+              <TripForm editMode handleSubmit={this.handleSubmit} />
+            </>
   }
 };
 

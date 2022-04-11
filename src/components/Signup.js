@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { updateSignupForm } from "../actions/signupForm.js"
 import { signup } from "../actions/currentUser.js"
 
+
+
 const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
 
   const handleUserInfoInputChange = event => {
@@ -20,7 +22,7 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
       ...signupFormData,
       hometown: {
         ...signupFormData.hometown,
-      [name]: value
+        [name]: value
       }
     }
     updateSignupForm(updatedFormInfo)

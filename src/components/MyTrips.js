@@ -2,13 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+
+
 // Question: Does THIS COMPONENT need to know 
 // about any particular piece of my Redux store?
 const MyTrips = props => {
-  const tripCards = props.trips.length > 0 ? 
-  props.trips.map(t => (<p key={t.id}><Link to={`/trips/${t.id}`}>{t.attributes.name}</Link></p>)) :
-  null
-  
+  const tripCards = props.trips.length > 0 ?
+    props.trips.map(t => (<p key={t.id}><Link to={`/trips/${t.id}`}>{t.attributes.name}</Link></p>)) :
+    null
+
   return tripCards
 }
 

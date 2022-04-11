@@ -43,7 +43,6 @@ export const getMyTrips = () => {
         if (response.error) {
           alert(response.error)
         } else {
-          console.log(response.data)
           dispatch(setMyTrips(response.data))
         }
       })
