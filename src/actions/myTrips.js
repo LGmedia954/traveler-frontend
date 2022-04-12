@@ -21,6 +21,13 @@ export const addTrip = trip => {
   }
 }
 
+export const deleteTripSuccess = tripId => {
+  return {
+    type: "DELETE_TRIP",
+    tripId
+  }
+}
+
 export const updateTripSuccess = trip => {
   return {
     type: "UPDATE_TRIP",
@@ -105,6 +112,32 @@ export const updateTrip = (tripData, history) => {
         } else {
           dispatch(updateTripSuccess(resp.data))
           history.push(`/trips/${resp.data.id}`)
+          // go somewhere else --> trip show?
+          // add the new trip to the store
+        }
+      })
+      .catch(console.log)
+
+  }
+}
+
+export const deleteTrip = (tripData, history) => {
+  return dispatch => {
+    
+    return fetch(`http://localhost:3001/api/v1/trips/${tripId}`, {
+      credentials: "include",
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(r => r.json())
+      .then(resp => {
+        if (resp.error) {
+          alert(resp.error)
+        } else {
+          dispatch(deleteTripSuccess(resp.data))
+          history.push(`/trips`)
           // go somewhere else --> trip show?
           // add the new trip to the store
         }
