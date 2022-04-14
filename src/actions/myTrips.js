@@ -121,9 +121,8 @@ export const updateTrip = (tripData, history) => {
   }
 }
 
-export const deleteTrip = (tripData, history) => {
+export const deleteTrip = (tripId, history) => {
   return dispatch => {
-    
     return fetch(`http://localhost:3001/api/v1/trips/${tripId}`, {
       credentials: "include",
       method: "DELETE",
@@ -136,7 +135,7 @@ export const deleteTrip = (tripData, history) => {
         if (resp.error) {
           alert(resp.error)
         } else {
-          dispatch(deleteTripSuccess(resp.data))
+          dispatch(deleteTripSuccess(tripId))
           history.push(`/trips`)
           // go somewhere else --> trip show?
           // add the new trip to the store
@@ -145,4 +144,5 @@ export const deleteTrip = (tripData, history) => {
       .catch(console.log)
 
   }
+
 }
