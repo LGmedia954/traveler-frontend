@@ -76,7 +76,7 @@ export const logout = event => {
   return dispatch => {
     dispatch(clearCurrentUser())
     dispatch(clearTrips())
-    return fetch('http://localhost:3001/api/v1/logout', {
+    return fetch("http://localhost:3001/api/v1/logout", {
       credentials: "include",
       method: "DELETE"
     })
