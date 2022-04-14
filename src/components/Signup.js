@@ -46,12 +46,6 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
   )
 }
 
-// this gives me an argument coming to this component that looks like this:
-// {
-//   username: "eddieb",
-//   password: "password"
-// }
-
 const mapStateToProps = state => {
   return {
     signupFormData: state.signupForm

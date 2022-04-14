@@ -36,6 +36,7 @@ export const updateTripSuccess = trip => {
 }
 
 // async actions
+
 export const getMyTrips = () => {
   return dispatch => {
     return fetch("http://localhost:3001/api/v1/trips", {

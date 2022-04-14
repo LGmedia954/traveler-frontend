@@ -7,9 +7,7 @@ import { connect } from 'react-redux'
 
 // 3.  This means Redux gives us back a prop called updateTripForm
 // which when invoked, Redux will now dispatch
-const TripForm = ({ 
-  formData, updateTripForm, userId, trip, handleSubmit, editMode
-}) => {
+const TripForm = ({ formData, updateTripForm, userId, trip, handleSubmit, editMode }) => {
 
   const { name, startDate, endDate } = formData
 
