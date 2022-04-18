@@ -1,6 +1,7 @@
 import { resetTripForm } from './tripForm'
 
 // synchronous actions
+
 export const setMyTrips = trips => {
   return {
     type: "SET_MY_TRIPS",
@@ -39,7 +40,7 @@ export const updateTripSuccess = trip => {
 
 export const getMyTrips = () => {
   return dispatch => {
-    return fetch("http://localhost:3001/api/v1/trips", {
+    return fetch("http://localhost:3000/api/v1/trips", {
       credentials: "include",
       method: "GET",
       headers: {
@@ -66,7 +67,7 @@ export const createTrip = (tripData, history) => {
       name: tripData.name,
       user_id: tripData.userId
     }
-    return fetch("http://localhost:3001/api/v1/trips", {
+    return fetch("http://localhost:3000/api/v1/trips", {
       credentials: "include",
       method: "POST",
       headers: {
@@ -98,7 +99,7 @@ export const updateTrip = (tripData, history) => {
       end_date: tripData.endDate,
       name: tripData.name
     }
-    return fetch(`http://localhost:3001/api/v1/trips/${tripData.tripId}`, {
+    return fetch(`http://localhost:3000/api/v1/trips/${tripData.tripId}`, {
       credentials: "include",
       method: "PATCH",
       headers: {
@@ -124,7 +125,7 @@ export const updateTrip = (tripData, history) => {
 
 export const deleteTrip = (tripId, history) => {
   return dispatch => {
-    return fetch(`http://localhost:3001/api/v1/trips/${tripId}`, {
+    return fetch(`http://localhost:3000/api/v1/trips/${tripId}`, {
       credentials: "include",
       method: "DELETE",
       headers: {

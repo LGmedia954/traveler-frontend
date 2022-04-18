@@ -33,7 +33,7 @@ class EditTripFormWrapper extends React.Component {
     return  <>
               <TripForm editMode handleSubmit={this.handleSubmit} />
               <br/>
-              <button style={{color: "red"}} onClick={()=>deleteTrip(tripId, history)}>Delete this trip</button>
+              <button style={{color: "red"}} onClick={()=>deleteTrip(tripId, history)}>Delete This Trip</button>
             </>
   }
 };

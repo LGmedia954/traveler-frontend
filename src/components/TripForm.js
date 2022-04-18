@@ -24,6 +24,7 @@ const TripForm = ({ formData, updateTripForm, userId, trip, handleSubmit, editMo
     <form onSubmit={event => {
       event.preventDefault()
       handleSubmit(formData)
+      console.log("testing submit")
     }}>
       <input
         placeholder="name"
